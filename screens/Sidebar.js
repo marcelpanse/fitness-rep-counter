@@ -1,18 +1,33 @@
-import React, {Component} from 'react';
-import {
-  Text,
-} from 'react-native';
+import React, {Component} from 'react'
+import {TouchableOpacity, Linking, Image, Text, View} from 'react-native'
 
-import {Content} from 'native-base';
+import {H3, Content} from 'native-base'
 
 export default class Sidebar extends Component {
   render() {
     return (
-        <Content style={{backgroundColor: '#FFFFFF'}}>
-          <Text>Drawer</Text>
-        </Content>
-    );
+      <Content style={{backgroundColor: '#DDDDDD'}}>
+        <View style={{flex: 1, alignItems: 'center', flexDirection: 'column', paddingTop: 25}}>
+          <Image
+            style={{height: 75, width: 75}}
+            source={require('../assets/images/icon.png')}
+          />
+
+          <H3 style={{marginBottom: 30}}>Fitness Rep Counter</H3>
+          <Text style={{marginBottom: 30}}>By Marcel Panse</Text>
+
+          <TouchableOpacity onPress={() => Linking.openURL('https://github.com/marcelpanse/fitness-rep-counter')}>
+            <Image
+              style={{height: 50, width: 50}}
+              source={require('../assets/images/github.png')}
+            />
+          </TouchableOpacity>
+          <Text>Open source</Text>
+
+        </View>
+      </Content>
+    )
   }
 }
 
-module.exports = Sidebar;
+module.exports = Sidebar

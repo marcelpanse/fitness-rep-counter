@@ -19,7 +19,6 @@ export default class Main extends React.Component {
   }
 
   componentDidMount = () => {
-    // AsyncStorage.clear()
     this.loadData()
   }
 
@@ -31,6 +30,7 @@ export default class Main extends React.Component {
     try {
       const fromStorage = await AsyncStorage.getItem(KEY)
       if (fromStorage) {
+        console.log('loading data from storage', fromStorage)
         this.setState({store: JSON.parse(fromStorage)})
       }
     } catch (e) {
@@ -55,7 +55,7 @@ export default class Main extends React.Component {
 
   renderTab = () => {
     if (this.state.tab === 'stats') {
-      return <StatsScreen/>
+      return <StatsScreen store={this.state.store} />
     } else {
       return <HomeScreen store={this.state.store} plus={this.plus} />
     }
@@ -72,7 +72,7 @@ export default class Main extends React.Component {
           {this.renderTab()}
         </Content>
         <Footer>
-          <FooterTab>
+          <FooterTab style={{backgroundColor: '#247BA0'}}>
             <Button vertical onPress={() => this.setState({tab: 'track'})}>
               <Icon name="book"/>
               <Text>Track</Text>
