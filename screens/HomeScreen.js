@@ -41,5 +41,3 @@ HomeScreen.propTypes = {
 }
 
 export default HomeScreen
-
-//https://docs.nativebase.io/Components.html#Drawer

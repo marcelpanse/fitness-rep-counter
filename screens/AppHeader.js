@@ -4,7 +4,7 @@ import {Header, Left, Button, Icon, Body, Title} from 'native-base'
 
 export default class AppHeader extends Component {
   render() {
-    return <Header>
+    return <Header androidStatusBarColor="#50514F" style={{backgroundColor: '#247BA0'}}>
       <Left>
         <Button transparent onPress={() => this.props.openDrawer()}>
           <Icon name='menu'/>

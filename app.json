@@ -26,9 +26,10 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "githubUrl": "https://github.com/marcelpanse/fitness-rep-counter"
+    "githubUrl": "https://github.com/marcelpanse/fitness-rep-counter",
+    "android": {
+      "package": "com.foobarbv.fitnessrepcounter",
+      "permissions": []
+    }
   }
 }
