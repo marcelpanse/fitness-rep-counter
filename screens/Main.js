@@ -53,11 +53,25 @@ export default class Main extends React.Component {
     this.storeData(store)
   }
 
+  addExercise = (exercise) => {
+    const store = this.state.store
+    store[exercise] = []
+    this.setState({store})
+    this.storeData(store)
+  }
+
+  deleteExercise = (exercise) => {
+    const store = this.state.store
+    delete store[exercise]
+    this.setState({store})
+    this.storeData(store)
+  }
+
   renderTab = () => {
     if (this.state.tab === 'stats') {
       return <StatsScreen store={this.state.store} />
     } else {
-      return <HomeScreen store={this.state.store} plus={this.plus} />
+      return <HomeScreen store={this.state.store} plus={this.plus} addExercise={this.addExercise} deleteExercise={this.deleteExercise}/>
     }
   }
 
