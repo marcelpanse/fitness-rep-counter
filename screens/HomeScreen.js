@@ -15,6 +15,8 @@ const getToday = (store, key) => {
 }
 
 export default class HomeScreen extends React.Component {
+  pressed = false
+  timeout = null
   state = {
     editMode: false,
     newExercise: ''
@@ -30,8 +32,30 @@ export default class HomeScreen extends React.Component {
     this.setState({editMode: false})
   }
 
+  onPressIn = (key) => {
+    this.pressed = true
+    this.handleHold(key, 100)
+  }
+
+  handleHold = (key, delay) => {
+    this.timeout = setTimeout(() => {
+      if (this.pressed) {
+        this.props.plus(key)
+        this.handleHold(key, Math.max(delay-10, 10))
+      }
+    }, delay)
+  }
+
+  onPressOut = (key) => {
+    this.pressed = false
+    if (this.timeout) {
+      clearTimeout(this.timeout)
+      this.timeout = null
+    }
+  }
+
   render() {
-    const {store, plus, addExercise} = this.props
+    const {store, plus} = this.props
 
     return <View>
       <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
@@ -53,7 +77,7 @@ export default class HomeScreen extends React.Component {
               </View>
               <View><Text>{getToday(store, key)}</Text></View>
               <View style={{paddingLeft: 15}}>
-                <Button primary bordered onPress={() => plus(key)}><Text>+</Text></Button>
+                <Button primary bordered onPressIn={() => this.onPressIn(key)} onPressOut={() => this.onPressOut(key)} onPress={() => plus(key)}><Text>+</Text></Button>
               </View>
             </View>
           </ListItem>
