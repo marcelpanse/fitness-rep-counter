@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {TouchableOpacity, Linking, Image, Text, View} from 'react-native'
 
 import {H3, Content} from 'native-base'
+import { Constants } from 'expo'
 
 export default class Sidebar extends Component {
   render() {
@@ -13,7 +14,8 @@ export default class Sidebar extends Component {
             source={require('../assets/images/icon.png')}
           />
 
-          <H3 style={{marginBottom: 30}}>Fitness Rep Counter</H3>
+          <H3 style={{marginBottom: 5}}>Fitness Rep Counter</H3>
+          <Text style={{marginBottom: 30}}>v{Constants.manifest.version}</Text>
           <Text style={{marginBottom: 30}}>By Marcel Panse</Text>
 
           <TouchableOpacity onPress={() => Linking.openURL('https://github.com/marcelpanse/fitness-rep-counter')}>
