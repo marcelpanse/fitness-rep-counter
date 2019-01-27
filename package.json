@@ -1,10 +1,11 @@
 {
-  "name": "my-new-project",
+  "name": "fitness_rep_counter",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "expo-publish": "expo publish",
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "node ./node_modules/jest/bin/jest.js --watchAll"
